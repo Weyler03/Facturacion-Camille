@@ -1,0 +1,27 @@
+/* Estilos personalizados para el menú */
+nav {
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Cambia el color al hacer scroll */
+.nav-scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos para el menú móvil */
+.menu-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-mobile {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
