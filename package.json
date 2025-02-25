@@ -1,6 +1,7 @@
 {
   "name": "camille",
   "private": true,
+  "homepage": "https://weyler03.github.io/Facturacion-Camille/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
