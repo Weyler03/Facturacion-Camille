@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="bg-[#ef59a0] p-4 shadow-md w-full fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
         <Link to="/" className="flex items-center">
-          <img src="public/images/Camille.jpg" alt="Logo" className="h-14 w-auto mr-4" />
+          <img src="/images/Camille.jpg" alt="Logo" className="h-14 w-auto mr-4" />
         </Link>
 
         {/* Menú Desktop */}
