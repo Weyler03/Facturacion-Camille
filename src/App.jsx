@@ -5,6 +5,8 @@ import Productos from './Pages/Productos/Index';
 import Facturacion from './Pages/Facturacion/Index';
 import Cotizaciones from './Pages/Cotizaciones/Index';
 import Inventario from './Pages/Inventario/Index';
+import Clientes from './Pages/Clientes/Index';
+import HomePage from './Pages/Home/Index';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,16 +14,18 @@ const Navbar = () => {
   return (
     <nav className="bg-[#ef59a0] p-4 shadow-md w-full fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
-        <Link to="/" className="flex items-center">
+        <Link to="/Facturacion-Camille/" className="flex items-center">
           <img src="images/Camille.jpg" alt="Logo" className="h-14 w-auto mr-4" />
         </Link>
 
         {/* Menú Desktop */}
         <ul className="hidden md:flex space-x-6">
+        
           <li><Link to="/productos" className="text-white font-semibold hover:underline">Productos</Link></li>
           <li><Link to="/facturacion" className="text-white font-semibold hover:underline">Facturación</Link></li>
           <li><Link to="/cotizaciones" className="text-white font-semibold hover:underline">Cotizaciones</Link></li>
           <li><Link to="/inventario" className="text-white font-semibold hover:underline">Inventario</Link></li>
+          <li><Link to="/clientes" className="text-white font-semibold hover:underline">Clientes</Link></li>
         </ul>
 
         {/* Botón de menú hamburguesa en móviles */}
@@ -37,10 +41,12 @@ const Navbar = () => {
         }`}
       >
         <ul className="flex flex-col space-y-4 p-4">
+          
           <li><Link to="/productos" className="text-white font-semibold block" onClick={() => setMenuOpen(false)}>Productos</Link></li>
           <li><Link to="/facturacion" className="text-white font-semibold block" onClick={() => setMenuOpen(false)}>Facturación</Link></li>
           <li><Link to="/cotizaciones" className="text-white font-semibold block" onClick={() => setMenuOpen(false)}>Cotizaciones</Link></li>
           <li><Link to="/inventario" className="text-white font-semibold block" onClick={() => setMenuOpen(false)}>Inventario</Link></li>
+          <li><Link to="/clientes" className="text-white font-semibold block" onClick={() => setMenuOpen(false)}>Clientes</Link></li>
         </ul>
       </div>
     </nav>
@@ -53,10 +59,12 @@ const App = () => {
       <Navbar />
       <div className="mt-20 p-4">
         <Routes>
+        <Route path="/Facturacion-Camille/" element={<HomePage />} />
           <Route path="/productos" element={<Productos />} />
           <Route path="/facturacion" element={<Facturacion />} />
           <Route path="/cotizaciones" element={<Cotizaciones />} />
           <Route path="/inventario" element={<Inventario />} />
+          <Route path="/clientes" element={<Clientes/>} />
         </Routes>
       </div>
     </Router>

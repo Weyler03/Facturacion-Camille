@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import InvoicePrint from "./InvoicePrint"; // Importa el componente de impresión
 
 const productos = [
@@ -13,9 +13,18 @@ const productos = [
   { nombre: "Línea de Rizos", precio: 2700 },
 ];
 
+const clientes = [
+  { nombre: "Salón Elegancia", direccion: "Av. Independencia #123" },
+  { nombre: "Belleza Total", direccion: "Calle Duarte #45" },
+  { nombre: "Glamour Express", direccion: "Av. Bolívar #78" },
+  { nombre: "Estética Divina", direccion: "Calle Las Flores #12" },
+  { nombre: "Encanto Natural", direccion: "Av. Winston Churchill #34" },
+];
+
 export default function Invoice() {
   const [factura, setFactura] = useState([]);
   const [mostrarFactura, setMostrarFactura] = useState(false);
+  const [clienteSeleccionado, setClienteSeleccionado] = useState(clientes[0]);
 
   const agregarProducto = (producto) => {
     setFactura([...factura, { ...producto, cantidad: 1 }]);
@@ -34,6 +43,23 @@ export default function Invoice() {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-xl font-bold mb-4">Facturación</h2>
+
+      {/* Selección de cliente */}
+      <div className="mb-4">
+        <label className="block font-semibold mb-2">Seleccionar Cliente:</label>
+        <select
+          className="w-full border p-2 rounded"
+          value={clienteSeleccionado.nombre}
+          onChange={(e) => {
+            const cliente = clientes.find((c) => c.nombre === e.target.value);
+            setClienteSeleccionado(cliente);
+          }}
+        >
+          {clientes.map((cliente, index) => (
+            <option key={index} value={cliente.nombre}>{cliente.nombre}</option>
+          ))}
+        </select>
+      </div>
 
       {/* Lista de productos disponibles */}
       <ul className="mb-4">
@@ -82,7 +108,14 @@ export default function Invoice() {
         </button>
       </div>
 
-      {mostrarFactura && <InvoicePrint factura={factura} total={calcularTotal()} onClose={() => setMostrarFactura(false)} />}
+      {mostrarFactura && (
+        <InvoicePrint 
+          factura={factura} 
+          total={calcularTotal()} 
+          cliente={clienteSeleccionado} 
+          onClose={() => setMostrarFactura(false)} 
+        />
+      )}
     </div>
   );
 }
